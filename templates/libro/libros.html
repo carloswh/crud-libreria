@@ -1,0 +1,36 @@
+{% extends 'layout/index.html' %}
+
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row justify-content-end">
+            <div class="col-md-12">
+                <a class="btn btn-secondary my-2 my-sm-0 pull-right" href="{% url 'biblioteca:libro_create' %}">Nuevo libro</a>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>TITULO</td>
+                    <td>FECHA PUBLICACION</td>
+                    <td>OPCIONES</td>
+                </tr>
+
+                {% if libros %}
+                    {% for libro in libros %}
+                        <tr>
+                            <td>{{ libro.titulo }}</td>
+                            <td>{{ libro.fecha_publicacion }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{% url 'biblioteca:libro_edit' libro.id %}">Editar</a>
+                                <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#modalEliminar" onclick="$('#submit-button').attr('href', '/biblioteca/libros/delete/{{ libro.id }}')">Eliminar</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif%}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

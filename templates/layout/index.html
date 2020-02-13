@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    
+    <title>Document</title>
+</head>
+<body>
+    {% include "layout/header.html" %}
+    {% include "layout/sidebar.html" %}
+
+    {% block content %}
+        <div>
+            prueba include files
+        </div>
+    {% endblock %}
+
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Esta seguro que desea eliminar el registro seleccionado?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a id="submit-button" class="btn btn-danger" href="#">Aceptar</a>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
